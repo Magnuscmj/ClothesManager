@@ -1,17 +1,27 @@
-import axios from "axios";
-import { IProduct } from "../Interfaces/IProducts";
+import axios from 'axios';
+import { IProduct } from '../Interfaces/IProducts';
 
-export const productService = ( function () {
+// fetch url from server
+export const productService = (function () {
+  const urlToProductController = 'https://localhost:5001/products';
 
-    const urlToProductController = "https://localhost:5001/products";
+  // GET
+  const getAllProducts = async () => {
+    const result = await axios.get<IProduct[]>(urlToProductController);
+    return result.data as IProduct[];
+  };
 
-    const getAllProducts = async () => {
-        const result = await axios.get<IProduct[]>( urlToProductController );
-        return result.data; // ["data"]
-    }
+  // POST
+  const postNewProduct = async (newProduct: IProduct) => {
+    const result = await axios.post<IProduct>(
+      urlToProductController,
+      newProduct );
+    return result.data as IProduct;
+  };
 
-    return {
-        getAllProducts
-    }
-
-} () );
+  // returns the request's
+  return {
+    getAllProducts,
+    postNewProduct,
+  };
+})();

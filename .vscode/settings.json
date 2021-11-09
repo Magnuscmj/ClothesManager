@@ -1,0 +1,10 @@
+{
+    "cSpell.customDictionaries": {
+        "custom-dictionary-folder-clothes-store": {
+            "name": "custom-dictionary-folder-clothes-store",
+            "path": "${workspaceFolder:clothes-store}/.cspell/custom-dictionary-folder-clothes-store.txt",
+            "addWords": true,
+            "scope": "folder"
+        }
+    }
+}
