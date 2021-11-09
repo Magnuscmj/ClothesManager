@@ -6,20 +6,20 @@ const Navigation: FC = () => {
     <>
       <ReactBootStrap.Navbar bg='light' variant='light'>
         <ReactBootStrap.Container>
-          <ReactBootStrap.Navbar.Brand href='#home'>
+          <ReactBootStrap.Navbar.Brand href='/'>
             Clothes Store
           </ReactBootStrap.Navbar.Brand>
           <ReactBootStrap.Nav className='me-auto'>
             <ReactBootStrap.Nav.Link href='/'>
               GET
               </ReactBootStrap.Nav.Link>
-            <ReactBootStrap.Nav.Link href='#features'>
+            <ReactBootStrap.Nav.Link href='postPage'>
               POST
             </ReactBootStrap.Nav.Link>
-            <ReactBootStrap.Nav.Link href='#pricing'>
+            <ReactBootStrap.Nav.Link href='deletePage'>
               DELETE
             </ReactBootStrap.Nav.Link>
-            <ReactBootStrap.Nav.Link href='#pricing'>
+            <ReactBootStrap.Nav.Link href='editPage'>
               EDIT
             </ReactBootStrap.Nav.Link>
           </ReactBootStrap.Nav>

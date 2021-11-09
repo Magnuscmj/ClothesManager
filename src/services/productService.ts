@@ -4,6 +4,8 @@ import { IProduct } from '../Interfaces/IProducts';
 // fetch url from server
 export const productService = (function () {
   const urlToProductController = 'https://localhost:5001/products';
+  const urlToImageUploadController =
+    'https://localhost:5001/ImageUpload/SaveImage';
 
   // GET
   const getAllProducts = async () => {
@@ -12,16 +14,22 @@ export const productService = (function () {
   };
 
   // POST
-  const postNewProduct = async (newProduct: IProduct) => {
-    const result = await axios.post<IProduct>(
-      urlToProductController,
-      newProduct );
-    return result.data as IProduct;
+  const postProduct = async (newProduct: IProduct, image: File) => {
+    let formData = new FormData();
+    formData.append( "file", image );
+    
+    axios.post(urlToProductController, newProduct);
+    axios({
+      url: urlToImageUploadController,
+      method: 'POST',
+      data: formData,
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
   };
 
-  // returns the request's
+  // returns the requests
   return {
     getAllProducts,
-    postNewProduct,
+    postProduct,
   };
 })();
