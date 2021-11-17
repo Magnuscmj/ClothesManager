@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Button, Card, CardGroup, Container, Row } from 'react-bootstrap';
+import { Button, Card, CardGroup, Col, Container, Row } from 'react-bootstrap';
 import { IProduct } from '../../Interfaces/IProducts';
 import { productService } from '../../services/productService';
 import '../../App.css';
@@ -29,6 +29,7 @@ function Products() {
   const createProductList = () => {
     return products.map((product: IProduct, key: number) => {
       return (
+        <Col>
         <div className='card-container'>
           <Card className='' key={key} style={{ width: '18rem' }}>
             <Card.Img
@@ -43,6 +44,7 @@ function Products() {
             </Card.Body>
           </Card>
         </div>
+        </Col>
       );
     });
   };
@@ -51,7 +53,7 @@ function Products() {
   return (
     <div className='Products'>
       <h1>Here we GET from DB</h1>
-      <section>{createProductList()}</section>
+      <Row>{createProductList()}</Row>
     </div>
   );
 }
