@@ -20,6 +20,11 @@ function Products() {
     setProducts(result);
   };
 
+  const deleteProductByID = async (id?: string) => {
+    await productService.deleteProduct(id);
+    getProduct()
+  }
+
   // bootstrap card-display
   const createProductList = () => {
     return products.map((product: IProduct, key: number) => {
@@ -34,7 +39,7 @@ function Products() {
               <Card.Title> {product.name} </Card.Title>
               <Card.Text> {product.type} </Card.Text>
               <Button variant='primary'>Edit</Button>
-              <Button variant='danger'>Delete</Button>
+              <Button variant='danger' onClick={() => deleteProductByID(product.id)}>Delete</Button>
             </Card.Body>
           </Card>
         </div>

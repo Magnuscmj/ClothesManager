@@ -27,9 +27,16 @@ export const productService = (function () {
     });
   };
 
+  //DELETE
+
+  const deleteProduct = async (id?: string) => {
+    await axios.delete(`https://localhost:5001/products/${id}`)
+  }
+
   // returns the requests
   return {
     getAllProducts,
     postProduct,
+    deleteProduct
   };
 })();
