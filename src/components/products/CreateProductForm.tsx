@@ -50,15 +50,15 @@ const CreateProductForm: FC = () => {
       <h1>Create new products</h1>
       <Form className='post-form'>
         <Form.Group className=' mb-3 w-100'>
-          <Form.Label>Product name:</Form.Label>
+          <Form.Label><h4>Product name:</h4></Form.Label>
           <Form.Control onChange={handleChange} name='name' type='text' />
         </Form.Group>
         <Form.Group className='mb-3 w-100'>
-          <Form.Label>Chose image:</Form.Label>
+          <Form.Label><h4>Chose image:</h4></Form.Label>
           <Form.Control onChange={handleChange} name='image' type='file' />
         </Form.Group>
         <Form.Group className='mb-3 w-100'>
-          <Form.Label>Select type:</Form.Label>
+          <Form.Label><h4>Select type:</h4></Form.Label>
           <Form.Control onChange={handleChange} name='type' type='text' />
         </Form.Group>
         <Button onClick={postNewProduct} type='button' value='Save new product'>
