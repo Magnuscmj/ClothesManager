@@ -33,10 +33,16 @@ export const productService = (function () {
     await axios.delete(`https://localhost:5001/products/${id}`)
   }
 
+  //Update
+  const updateProduct = async (id: string, data: IProduct) => {
+    await axios.put(`https://localhost:5001/products/${id}`, data)
+  }
+
   // returns the requests
   return {
     getAllProducts,
     postProduct,
-    deleteProduct
+    deleteProduct,
+    updateProduct
   };
 })();

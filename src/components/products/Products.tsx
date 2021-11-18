@@ -7,31 +7,37 @@ import '../../App.css';
 // useState
 function Products() {
   const [products, setProducts] = useState<IProduct[]>([
-    { id: 'loading..', name: 'Loading..', type: 'Loading..', image: 'loading' },
+    { id: 'loading..', name: 'Loading..', type: 'Loading..', image: '' },
   ]);
 
   // useEffect
   useEffect(() => {
-    getProduct();
+    getProducts();
   }, []);
 
-  const getProduct = async () => {
+  const getProducts = async () => {
     const result = await productService.getAllProducts();
     setProducts(result);
   };
 
   const deleteProductByID = async (id?: string) => {
     await productService.deleteProduct(id);
-    getProduct()
+    getProducts()
+  }
+
+  const updateProduct = async (id: string, data: IProduct) => {
+    await productService.updateProduct(id, data);
   }
 
   // bootstrap card-display
   const createProductList = () => {
     return products.map((product: IProduct, key: number) => {
+      console.log(product.id);
+      
       return (
-        <Col>
+        <Col key={key}>
         <div className='card-container'>
-          <Card className='' key={key} style={{ width: '18rem' }}>
+          <Card style={{ width: '18rem' }}>
             <Card.Img
               variant='top'
               src={`https://localhost:5001/images/${product.image}`}
@@ -51,10 +57,10 @@ function Products() {
 
   // returns and shows createProductList
   return (
-    <div className='Products'>
-      <h1>Here we GET from DB</h1>
-      <Row>{createProductList()}</Row>
-    </div>
+      <Container>
+        <h1>Here we GET from DB</h1>
+        <Row>{createProductList()}</Row>
+      </Container>
   );
 }
 
