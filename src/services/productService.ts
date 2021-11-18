@@ -33,10 +33,18 @@ export const productService = (function () {
     await axios.delete(`https://localhost:5001/products/${id}`)
   }
 
+<<<<<<< Updated upstream
   //Update
   const updateProduct = async (id: string, data: IProduct) => {
     await axios.put(`https://localhost:5001/products/${id}`, data)
   }
+=======
+  //PUT
+  const updateProducts = async (data: IProduct, id?: string) => {
+    console.log(id);
+    await axios.put(`https://localhost:5001/products/${id}`, data);
+  };
+>>>>>>> Stashed changes
 
   // returns the requests
   return {
