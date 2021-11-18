@@ -52,7 +52,7 @@ function Products() {
   // returns and shows createProductList
   return (
     <div className='Products'>
-      <h1>Here we GET from DB</h1>
+      <h1>Our Products</h1>
       <Row>{createProductList()}</Row>
     </div>
   );

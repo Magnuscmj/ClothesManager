@@ -3,7 +3,10 @@
 }
 
 body {
-  background-color: rgb(15, 15, 15) !important;
+  background: linear-gradient(#616464, #1c1c2a);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 99vh;
 }
 
 h1 {

@@ -11,17 +11,8 @@ const Navigation: FC = () => {
           </ReactBootStrap.Navbar.Brand>
           <ReactBootStrap.Nav className='me-auto'>
             <ReactBootStrap.Nav.Link href='/'>
-              GET
+              Products
               </ReactBootStrap.Nav.Link>
-            <ReactBootStrap.Nav.Link href='postPage'>
-              POST
-            </ReactBootStrap.Nav.Link>
-            <ReactBootStrap.Nav.Link href='deletePage'>
-              DELETE
-            </ReactBootStrap.Nav.Link>
-            <ReactBootStrap.Nav.Link href='editPage'>
-              EDIT
-            </ReactBootStrap.Nav.Link>
           </ReactBootStrap.Nav>
         </ReactBootStrap.Container>
       </ReactBootStrap.Navbar>

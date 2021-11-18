@@ -2,7 +2,7 @@ import { FC, ChangeEvent, useState } from 'react';
 import { productService } from '../../services/productService';
 import { IProduct } from '../../Interfaces/IProducts';
 import { Button, Form } from 'react-bootstrap';
-import { useHistory } from 'react-router';
+import  products from '../products/Products';
 
 const CreateProductForm: FC = () => {
   const [newProduct, setNewProduct] = useState<IProduct>({
@@ -11,14 +11,13 @@ const CreateProductForm: FC = () => {
     type: '',
   });
   const [newImage, setNewImage] = useState<File>();
-  const history = useHistory();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     let { name } = event.target;
 
     switch (name) {
       case 'name':
-        let { value } = event.target;
+        var { value } = event.target;
         setNewProduct({ ...newProduct, name: value });
         break;
       case 'image':
@@ -28,13 +27,15 @@ const CreateProductForm: FC = () => {
           setNewImage(files[0]);
         }
         break;
+      case 'type':
+        var { value } = event.target;
+        setNewProduct({ ...newProduct, type: value });
+        break;
     }
   };
 
   const postNewProduct = () => {
     productService.postProduct(newProduct, newImage as File);
-    let path = `/`;
-    history.push(path);
   };
 
   return (
