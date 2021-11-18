@@ -61,7 +61,7 @@ const CreateProductForm: FC = () => {
           <Form.Label><h4>Select type:</h4></Form.Label>
           <Form.Control onChange={handleChange} name='type' type='text' />
         </Form.Group>
-        <Button onClick={postNewProduct} type='button' value='Save new product'>
+        <Button onClick={postNewProduct} type='button' variant='success' value='Save new product'>
           Add new products to card
         </Button>
       </Form>

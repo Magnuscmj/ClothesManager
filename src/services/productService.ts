@@ -1,23 +1,23 @@
 import axios from 'axios';
 import { IProduct } from '../Interfaces/IProducts';
 
-// fetch url from server
+//fetch url from server
 export const productService = (function () {
   const urlToProductController = 'https://localhost:5001/products';
   const urlToImageUploadController =
     'https://localhost:5001/ImageUpload/SaveImage';
 
-  // GET
+  //GET
   const getAllProducts = async () => {
     const result = await axios.get<IProduct[]>(urlToProductController);
     return result.data as IProduct[];
   };
 
-  // POST
+  //POST
   const postProduct = async (newProduct: IProduct, image: File) => {
     let formData = new FormData();
-    formData.append( "file", image );
-    
+    formData.append('file', image);
+
     axios.post(urlToProductController, newProduct);
     axios({
       url: urlToImageUploadController,
@@ -28,15 +28,20 @@ export const productService = (function () {
   };
 
   //DELETE
-
   const deleteProduct = async (id?: string) => {
-    await axios.delete(`https://localhost:5001/products/${id}`)
-  }
+    await axios.delete(`https://localhost:5001/products/${id}`);
+  };
+
+  //PUT
+  const updateProducts = async (id: string, data: IProduct) => {
+    await axios.put(`https://localhost:5001/products/${id}`, data);
+  };
 
   // returns the requests
   return {
     getAllProducts,
     postProduct,
-    deleteProduct
+    deleteProduct,
+    updateProducts,
   };
 })();

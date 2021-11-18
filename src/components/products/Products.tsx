@@ -25,13 +25,23 @@ const Products: FC = () => {
     getProduct();
   };
 
+  const updateProduct = async (id: string, data: IProduct) => {
+    await productService.updateProducts(id, data);
+  };
+
+  const dummyObject: IProduct = {
+    name: 'put',
+    type: 'put',
+    image: ''
+  }
+
   // bootstrap card-display
   const createProductList = () => {
     return products.map((product: IProduct, key: number) => {
       return (
         <Col>
           <div className='card-container'>
-            <Card className='Cards' key={key} style={{ width: '18rem' }}>
+            <Card className='Cards' key={key} style={{ width: '18rem', }}>
               <Card.Img
                 style={{ maxWidth: '350px', minHeight: '200px' }}
                 variant='top'
@@ -42,15 +52,15 @@ const Products: FC = () => {
                 <Card.Text> {product.type} </Card.Text>
                 <Button
                   variant='primary'
-                  style={{ marginRight: '20px', minWidth: '100px' }}
-                  // onClick EDIT here
+                  style={{ marginRight: '10px', minWidth: '100px' }}
+                  onClick={() => updateProduct("61961033a10a8f9969ca3698", dummyObject )}
                 >
                   Edit
                 </Button>
                 <Button
                   variant='danger'
                   onClick={() => deleteProductByID(product.id)}
-                  style={{ marginLeft: '20px', minWidth: '100px' }}
+                  style={{ marginLeft: '10px', minWidth: '100px' }}
                 >
                   Delete
                 </Button>
