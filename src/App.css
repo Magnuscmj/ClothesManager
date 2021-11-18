@@ -3,7 +3,7 @@
 }
 
 body {
-  background: linear-gradient(#616464, #1c1c2a);
+  background: linear-gradient(#616464, #7a9397);
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
@@ -13,7 +13,7 @@ body {
 
 h1 {
   padding: 50px;
-  color: whitesmoke;
+  color: rgb(0, 54, 75);
   text-align: center;
 }
 
