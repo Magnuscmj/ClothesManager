@@ -22,28 +22,41 @@ function Products() {
 
   const deleteProductByID = async (id?: string) => {
     await productService.deleteProduct(id);
-    getProduct()
-  }
+    getProduct();
+  };
 
   // bootstrap card-display
   const createProductList = () => {
     return products.map((product: IProduct, key: number) => {
       return (
         <Col>
-        <div className='card-container'>
-          <Card className='' key={key} style={{ width: '18rem' }}>
-            <Card.Img
-              variant='top'
-              src={`https://localhost:5001/images/${product.image}`}
-            />
-            <Card.Body>
-              <Card.Title> {product.name} </Card.Title>
-              <Card.Text> {product.type} </Card.Text>
-              <Button variant='primary'>Edit</Button>
-              <Button variant='danger' onClick={() => deleteProductByID(product.id)}>Delete</Button>
-            </Card.Body>
-          </Card>
-        </div>
+          <div className='card-container'>
+            <Card className='Cards' key={key} style={{ width: '18rem' }}>
+              <Card.Img
+                style={{ maxWidth: '350px', minHeight: '200px' }}
+                variant='top'
+                src={`https://localhost:5001/images/${product.image}`}
+              />
+              <Card.Body>
+                <Card.Title> {product.name} </Card.Title>
+                <Card.Text> {product.type} </Card.Text>
+                <Button
+                  variant='primary'
+                  style={{ marginRight: '20px', minWidth: '100px' }}
+                  // onClick EDIT here
+                >
+                  Edit
+                </Button>
+                <Button
+                  variant='danger'
+                  onClick={() => deleteProductByID(product.id)}
+                  style={{ marginLeft: '20px', minWidth: '100px' }}
+                >
+                  Delete
+                </Button>
+              </Card.Body>
+            </Card>
+          </div>
         </Col>
       );
     });
