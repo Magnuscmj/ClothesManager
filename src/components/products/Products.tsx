@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FC } from 'react';
 import { Button, Card, CardGroup, Col, Container, Row } from 'react-bootstrap';
 import { IProduct } from '../../Interfaces/IProducts';
 import { productService } from '../../services/productService';
 import '../../App.css';
 
 // useState
-function Products() {
+const Products: FC = () => {
   const [products, setProducts] = useState<IProduct[]>([
     { id: 'loading..', name: 'Loading..', type: 'Loading..', image: 'loading' },
   ]);

@@ -1,8 +1,8 @@
 import { FC, ChangeEvent, useState } from 'react';
 import { productService } from '../../services/productService';
-import { IProduct } from '../../Interfaces/IProducts';
 import { Button, Form } from 'react-bootstrap';
 import Swal from 'sweetalert2';
+import { IProduct } from '../../Interfaces/Interfaces';
 
 const CreateProductForm: FC = () => {
   const [newProduct, setNewProduct] = useState<IProduct>({
