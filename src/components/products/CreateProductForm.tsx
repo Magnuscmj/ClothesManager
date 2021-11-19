@@ -1,7 +1,6 @@
 import { FC, ChangeEvent, useState } from 'react';
 import { productService } from '../../services/productService';
 import { Button, Form } from 'react-bootstrap';
-import Swal from 'sweetalert2';
 import { IProduct } from '../../Interfaces/Interfaces';
 
 const CreateProductForm: FC = () => {
@@ -36,13 +35,6 @@ const CreateProductForm: FC = () => {
 
   const postNewProduct = () => {
     productService.postProduct(newProduct, newImage as File);
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Success, product created!',
-      showConfirmButton: false,
-      timer: 1500,
-    });
   };
 
   return (
