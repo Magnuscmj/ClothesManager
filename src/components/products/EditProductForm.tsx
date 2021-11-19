@@ -38,9 +38,6 @@ const EditProductForm: FC = () => {
     productService.postProduct(newProduct, newImage as File);
   };
 
-  const updateAllProducts = async (id: string, data: IProduct) => {
-    await productService.updateProducts(id, data);
-  };
 
   return (
     <div className='form-container'>

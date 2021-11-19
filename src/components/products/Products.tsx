@@ -54,7 +54,7 @@ const Products: FC = () => {
                 <Button
                   variant='primary'
                   style={{ marginRight: '10px', minWidth: '100px' }}
-                  onClick={() => updateProduct(dummyObject)}
+                  onClick={() => updateProduct(dummyObject, product.id)}
                 >
                   Edit
                 </Button>
