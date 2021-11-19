@@ -33,7 +33,7 @@ export const productService = (function () {
   };
 
   //PUT
-  const updateProducts = async (id: string, data: IProduct) => {
+  const updateProduct = async (data: IProduct, id?: string) => {
     await axios.put(`https://localhost:5001/products/${id}`, data);
   };
 
@@ -42,6 +42,6 @@ export const productService = (function () {
     getAllProducts,
     postProduct,
     deleteProduct,
-    updateProducts,
+    updateProduct
   };
 })();
