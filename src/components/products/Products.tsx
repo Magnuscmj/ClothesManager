@@ -25,39 +25,13 @@ function Products() {
     getProducts()
   }
 
-<<<<<<< Updated upstream
-  const updateProduct = async (id: string, data: IProduct) => {
-    await productService.updateProduct(id, data);
-  }
-=======
   const updateProduct = async (data: IProduct, id?: string) => {
-    await productService.updateProducts(data, id);
+    await productService.updateProduct(data, id);
   };
->>>>>>> Stashed changes
 
   // bootstrap card-display
   const createProductList = () => {
     return products.map((product: IProduct, key: number) => {
-<<<<<<< Updated upstream
-      console.log(product.id);
-      
-      return (
-        <Col key={key}>
-        <div className='card-container'>
-          <Card style={{ width: '18rem' }}>
-            <Card.Img
-              variant='top'
-              src={`https://localhost:5001/images/${product.image}`}
-            />
-            <Card.Body>
-              <Card.Title> {product.name} </Card.Title>
-              <Card.Text> {product.type} </Card.Text>
-              <Button variant='primary'>Edit</Button>
-              <Button variant='danger' onClick={() => deleteProductByID(product.id)}>Delete</Button>
-            </Card.Body>
-          </Card>
-        </div>
-=======
       const dummyObject: IProduct = {
         id: product.id,
         name: 'putasdasfsasfd',
@@ -93,7 +67,6 @@ function Products() {
               </Card.Body>
             </Card>
           </div>
->>>>>>> Stashed changes
         </Col>
       );
     });
