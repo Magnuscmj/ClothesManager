@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { IProduct } from '../Interfaces/IProducts';
+import { IProduct } from '../Interfaces/Interfaces';
+
 
 //fetch url from server
 export const productService = (function () {

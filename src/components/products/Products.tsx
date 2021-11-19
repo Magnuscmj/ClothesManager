@@ -1,8 +1,10 @@
 import { useState, useEffect, FC } from 'react';
-import { Button, Card, CardGroup, Col, Container, Row } from 'react-bootstrap';
-import { IProduct } from '../../Interfaces/IProducts';
+import { Button, Card, Col, Row } from 'react-bootstrap';
 import { productService } from '../../services/productService';
 import '../../App.css';
+import { IProduct } from '../../Interfaces/Interfaces';
+import { UpdateProductModal } from './UpdateProductModal';
+
 
 // useState
 const Products: FC = () => {
@@ -10,35 +12,39 @@ const Products: FC = () => {
     { id: 'loading..', name: 'Loading..', type: 'Loading..', image: 'loading' },
   ]);
 
+  const [selectedId, setSelectedId] = useState<string | undefined>();
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClose = () => setShowModal(false);
+  const handleShow = (id?: string) => {
+    setShowModal(true);
+    setSelectedId(id)
+  }
+
   // useEffect
   useEffect(() => {
-    getProduct();
+    getProducts();
   }, []);
 
-  const getProduct = async () => {
+  const getProducts = async () => {
     const result = await productService.getAllProducts();
     setProducts(result);
   };
 
   const deleteProductByID = async (id?: string) => {
     await productService.deleteProduct(id);
-    getProduct();
+    getProducts();
   };
 
   const updateProduct = async (data: IProduct, id?: string) => {
     await productService.updateProduct(data, id);
+    getProducts();
   };
 
   // bootstrap card-display
   const createProductList = () => {
     return products.map((product: IProduct, key: number) => {
-      const dummyObject: IProduct = {
-        id: product.id,
-        name: 'putasdasfsasfd',
-        type: 'put',
-        image: ''
-      }
-
+      
       return (
         <Col>
           <div className='card-container'>
@@ -54,7 +60,7 @@ const Products: FC = () => {
                 <Button
                   variant='primary'
                   style={{ marginRight: '10px', minWidth: '100px' }}
-                  onClick={() => updateProduct(dummyObject, product.id)}
+                  onClick={() => handleShow(product.id)}
                 >
                   Edit
                 </Button>
@@ -78,6 +84,7 @@ const Products: FC = () => {
     <div className='Products'>
       <h1>Our Products</h1>
       <Row>{createProductList()}</Row>
+      <UpdateProductModal updateFunction={updateProduct} showModal={showModal} setShowModal={setShowModal} handleClose={handleClose} handleShow={handleShow} selectedId={selectedId}/>
     </div>
   );
 }
