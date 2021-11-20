@@ -4,11 +4,11 @@ import { IProduct, IUpdateProductForm } from '../../Interfaces/Interfaces';
 
 export const UpdateProductForm: FC<IUpdateProductForm> = (props) => {
     const [newProduct, setNewProduct] = useState<IProduct>({
-        id: props.id,
         name: '',
         image: '',
         type: '',
       });
+
       const [newImage, setNewImage] = useState<File>();
     
       const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -29,6 +29,7 @@ export const UpdateProductForm: FC<IUpdateProductForm> = (props) => {
           case 'type':
             var { value } = event.target;
             setNewProduct({ ...newProduct, type: value });
+      
             break;
         }
       };
@@ -48,10 +49,10 @@ export const UpdateProductForm: FC<IUpdateProductForm> = (props) => {
           <Form.Label><h4>Select type:</h4></Form.Label>
           <Form.Control onChange={handleChange} name='type' type='text' />
         </Form.Group>
-        <Button onClick={() => props.updateFunction(newProduct, props.id)} type='button' variant='success' value='Save new product'>
+        <Button onClick={() => props.updateFunction(newProduct, newImage, props.id)} type='button' variant='success' value='Save new product'>
           Update Product
         </Button>
         </Form>
-        </Container>
+        </Container> 
     )
 }
