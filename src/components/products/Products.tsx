@@ -37,8 +37,8 @@ const Products: FC = () => {
     getProducts();
   };
 
-  const updateProduct = async (data: IProduct, id?: string) => {
-    await productService.updateProduct(data, id);
+  const updateProduct = async (data: IProduct, image: File | undefined, id?: string) => {
+    await productService.updateProduct(data, image, id);
     getProducts();
   };
 

@@ -34,8 +34,22 @@ export const productService = (function () {
   };
 
   //PUT
-  const updateProduct = async (data: IProduct, id?: string) => {
+  const updateProduct = async (data: IProduct, image: File | undefined , id?: string) => {
+    let formData = new FormData();
+  
+    if(!image){
+      await axios.put(`https://localhost:5001/products/${id}`, data);
+      return
+    }
+    formData.append('file', image);
+
     await axios.put(`https://localhost:5001/products/${id}`, data);
+    axios({
+      url: urlToImageUploadController,
+      method: 'POST',
+      data: formData,
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
   };
 
   // returns the requests

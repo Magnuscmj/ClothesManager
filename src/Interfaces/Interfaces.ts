@@ -11,10 +11,10 @@ export interface IUpdateProductModal{
     handleShow: () => void,
     handleClose: () => void,
     selectedId?: string,
-    updateFunction: (data: IProduct, id?: string) => Promise<void>
+    updateFunction: (data: IProduct, image: File | undefined , id?: string) => Promise<void>
 }
 
 export interface IUpdateProductForm{
-    updateFunction: (data: IProduct, id?: string) => Promise<void>,
+    updateFunction: (data: IProduct, image: File | undefined , id?: string) => Promise<void>,
     id?: string,
 }
