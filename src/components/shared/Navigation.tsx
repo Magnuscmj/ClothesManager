@@ -10,12 +10,10 @@ const Navigation: FC = () => {
             Clothes Store
           </ReactBootStrap.Navbar.Brand>
           <ReactBootStrap.Nav className='me-auto'>
-            <ReactBootStrap.Nav.Link href='/'>
-              Products
-              </ReactBootStrap.Nav.Link>
-              <ReactBootStrap.Nav.Link href='/createPage'>
+            <ReactBootStrap.Nav.Link href='/'>Products</ReactBootStrap.Nav.Link>
+            <ReactBootStrap.Nav.Link href='/createPage'>
               Create Product
-              </ReactBootStrap.Nav.Link>
+            </ReactBootStrap.Nav.Link>
           </ReactBootStrap.Nav>
         </ReactBootStrap.Container>
       </ReactBootStrap.Navbar>

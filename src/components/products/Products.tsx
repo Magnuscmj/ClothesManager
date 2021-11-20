@@ -39,7 +39,7 @@ const Products: FC = () => {
   const updateProduct = async (
     data: IProduct,
     image: File | undefined,
-    id?: string,
+    id?: string
   ) => {
     await productService.updateProduct(data, image, id);
     getProducts();
@@ -54,7 +54,11 @@ const Products: FC = () => {
           <div className='card-container'>
             <Card className='Cards' key={key} style={{ width: '18rem' }}>
               <Card.Img
-                style={{ maxWidth: '350px', maxHeight: '200px', objectFit: 'cover' }}
+                style={{
+                  maxWidth: '350px',
+                  height: '200px',
+                  objectFit: 'cover',
+                }}
                 variant='top'
                 src={`https://localhost:5001/images/${product.image}`}
               />
