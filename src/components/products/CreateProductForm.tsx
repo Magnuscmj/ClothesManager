@@ -2,6 +2,7 @@ import { FC, ChangeEvent, useState } from 'react';
 import { productService } from '../../services/productService';
 import { Button, Form } from 'react-bootstrap';
 import { IProduct } from '../../Interfaces/Interfaces';
+import { Link } from 'react-router-dom';
 
 const CreateProductForm: FC = () => {
   const [newProduct, setNewProduct] = useState<IProduct>({
@@ -35,6 +36,7 @@ const CreateProductForm: FC = () => {
 
   const postNewProduct = () => {
     productService.postProduct(newProduct, newImage as File);
+    
   };
 
   return (
@@ -53,9 +55,11 @@ const CreateProductForm: FC = () => {
           <Form.Label><h4>Select type:</h4></Form.Label>
           <Form.Control onChange={handleChange} name='type' type='text' />
         </Form.Group>
+        <Link to={'/'}>
         <Button onClick={postNewProduct} type='button' variant='success' value='Save new product'>
           Add new products to card
         </Button>
+        </Link>
       </Form>
     </div>
   );

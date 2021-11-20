@@ -5,7 +5,6 @@ import '../../App.css';
 import { IProduct } from '../../Interfaces/Interfaces';
 import { UpdateProductModal } from './UpdateProductModal';
 
-
 // useState
 const Products: FC = () => {
   const [products, setProducts] = useState<IProduct[]>([
@@ -18,9 +17,9 @@ const Products: FC = () => {
   const handleClose = () => setShowModal(false);
   const handleShow = (id?: string) => {
     setShowModal(true);
-    setSelectedId(id)
+    setSelectedId(id);
     console.log(selectedId);
-  }
+  };
 
   // useEffect
   useEffect(() => {
@@ -37,21 +36,25 @@ const Products: FC = () => {
     getProducts();
   };
 
-  const updateProduct = async (data: IProduct, image: File | undefined, id?: string) => {
+  const updateProduct = async (
+    data: IProduct,
+    image: File | undefined,
+    id?: string,
+  ) => {
     await productService.updateProduct(data, image, id);
     getProducts();
+    handleClose();
   };
 
   // bootstrap card-display
   const createProductList = () => {
     return products.map((product: IProduct, key: number) => {
-      
       return (
         <Col key={key}>
           <div className='card-container'>
-            <Card className='Cards' key={key} style={{ width: '18rem', }}>
+            <Card className='Cards' key={key} style={{ width: '18rem' }}>
               <Card.Img
-                style={{ maxWidth: '350px', minHeight: '200px' }}
+                style={{ maxWidth: '350px', maxHeight: '200px', objectFit: 'cover' }}
                 variant='top'
                 src={`https://localhost:5001/images/${product.image}`}
               />
@@ -85,9 +88,16 @@ const Products: FC = () => {
     <div className='Products'>
       <h1>Our Products</h1>
       <Row>{createProductList()}</Row>
-      <UpdateProductModal updateFunction={updateProduct} showModal={showModal} setShowModal={setShowModal} handleClose={handleClose} handleShow={handleShow} selectedId={selectedId}/>
+      <UpdateProductModal
+        updateFunction={updateProduct}
+        showModal={showModal}
+        setShowModal={setShowModal}
+        handleClose={handleClose}
+        handleShow={handleShow}
+        selectedId={selectedId}
+      />
     </div>
   );
-}
+};
 
 export default Products;

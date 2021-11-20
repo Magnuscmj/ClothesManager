@@ -13,6 +13,9 @@ const Navigation: FC = () => {
             <ReactBootStrap.Nav.Link href='/'>
               Products
               </ReactBootStrap.Nav.Link>
+              <ReactBootStrap.Nav.Link href='/createPage'>
+              Create Product
+              </ReactBootStrap.Nav.Link>
           </ReactBootStrap.Nav>
         </ReactBootStrap.Container>
       </ReactBootStrap.Navbar>
