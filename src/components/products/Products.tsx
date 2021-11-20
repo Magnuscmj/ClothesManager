@@ -19,6 +19,7 @@ const Products: FC = () => {
   const handleShow = (id?: string) => {
     setShowModal(true);
     setSelectedId(id)
+    console.log(selectedId);
   }
 
   // useEffect
@@ -46,7 +47,7 @@ const Products: FC = () => {
     return products.map((product: IProduct, key: number) => {
       
       return (
-        <Col>
+        <Col key={key}>
           <div className='card-container'>
             <Card className='Cards' key={key} style={{ width: '18rem', }}>
               <Card.Img

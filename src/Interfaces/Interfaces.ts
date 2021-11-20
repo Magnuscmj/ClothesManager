@@ -16,5 +16,5 @@ export interface IUpdateProductModal{
 
 export interface IUpdateProductForm{
     updateFunction: (data: IProduct, id?: string) => Promise<void>,
-    id?: string
+    id?: string,
 }

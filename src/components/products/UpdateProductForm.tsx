@@ -4,7 +4,6 @@ import { IProduct, IUpdateProductForm } from '../../Interfaces/Interfaces';
 
 export const UpdateProductForm: FC<IUpdateProductForm> = (props) => {
     const [newProduct, setNewProduct] = useState<IProduct>({
-        id: props.id,
         name: '',
         image: '',
         type: '',
@@ -29,6 +28,7 @@ export const UpdateProductForm: FC<IUpdateProductForm> = (props) => {
           case 'type':
             var { value } = event.target;
             setNewProduct({ ...newProduct, type: value });
+      
             break;
         }
       };
