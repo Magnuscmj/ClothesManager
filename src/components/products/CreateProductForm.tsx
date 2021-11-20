@@ -36,6 +36,7 @@ const CreateProductForm: FC = () => {
 
   const postNewProduct = () => {
     productService.postProduct(newProduct, newImage as File);
+    
   };
 
   return (
@@ -43,36 +44,25 @@ const CreateProductForm: FC = () => {
       <h1>Create new products</h1>
       <Form className='post-form'>
         <Form.Group className=' mb-3 w-100'>
-          <Form.Label>
-            <h4>Product name:</h4>
-          </Form.Label>
+          <Form.Label><h4>Product name:</h4></Form.Label>
           <Form.Control onChange={handleChange} name='name' type='text' />
         </Form.Group>
         <Form.Group className='mb-3 w-100'>
-          <Form.Label>
-            <h4>Chose image:</h4>
-          </Form.Label>
+          <Form.Label><h4>Chose image:</h4></Form.Label>
           <Form.Control onChange={handleChange} name='image' type='file' />
         </Form.Group>
         <Form.Group className='mb-3 w-100'>
-          <Form.Label>
-            <h4>Select type:</h4>
-          </Form.Label>
+          <Form.Label><h4>Select type:</h4></Form.Label>
           <Form.Control onChange={handleChange} name='type' type='text' />
         </Form.Group>
         <Link to={'/'}>
-          <Button
-            onClick={postNewProduct}
-            type='button'
-            variant='success'
-            value='Save new product'
-          >
-            Add new products to card
-          </Button>
+        <Button onClick={postNewProduct} type='button' variant='success' value='Save new product'>
+          Add new products to card
+        </Button>
         </Link>
       </Form>
     </div>
   );
-};
+};  
 
 export default CreateProductForm;

@@ -1,10 +1,11 @@
 import { useState, useEffect, FC } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { productService } from '../../services/productService';
 import '../../App.css';
 import { IProduct } from '../../Interfaces/Interfaces';
 import { UpdateProductModal } from './UpdateProductModal';
 import { ProductCard } from './ProductCard';
+import { Link } from 'react-router-dom';
 
 // useState
 const Products: FC = () => {
@@ -53,7 +54,11 @@ const Products: FC = () => {
       return (
         <Col key={key}>
           <div className='card-container'>
-            <ProductCard product={product} handleShow={handleShow} deleteProductByID={deleteProductByID} />
+            <ProductCard
+              product={product}
+              handleShow={handleShow}
+              deleteProductByID={deleteProductByID}
+            />
           </div>
         </Col>
       );
@@ -62,8 +67,16 @@ const Products: FC = () => {
 
   // returns and shows createProductList
   return (
-    <div className='Products'>
-      <h1>Our Products</h1>
+    <Container className='Products'>
+      <Row>
+        <Col className='text-center'>
+          <Link to={'/createPage'}>
+          <Button className='createButton' variant='success'>
+            <h4>Create New Product +</h4>
+          </Button>
+          </Link>
+        </Col>
+      </Row>
       <Row>{createProductList()}</Row>
       <UpdateProductModal
         updateFunction={updateProduct}
@@ -73,7 +86,7 @@ const Products: FC = () => {
         handleShow={handleShow}
         selectedId={selectedId}
       />
-    </div>
+    </Container>
   );
 };
 
