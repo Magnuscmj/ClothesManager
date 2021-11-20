@@ -1,9 +1,10 @@
 import { useState, useEffect, FC } from 'react';
-import { Button, Card, Col, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import { productService } from '../../services/productService';
 import '../../App.css';
 import { IProduct } from '../../Interfaces/Interfaces';
 import { UpdateProductModal } from './UpdateProductModal';
+import { ProductCard } from './ProductCard';
 
 // useState
 const Products: FC = () => {
@@ -52,35 +53,7 @@ const Products: FC = () => {
       return (
         <Col key={key}>
           <div className='card-container'>
-            <Card className='Cards' key={key} style={{ width: '18rem' }}>
-              <Card.Img
-                style={{
-                  maxWidth: '350px',
-                  height: '200px',
-                  objectFit: 'cover',
-                }}
-                variant='top'
-                src={`https://localhost:5001/images/${product.image}`}
-              />
-              <Card.Body>
-                <Card.Title> {product.name} </Card.Title>
-                <Card.Text> {product.type} </Card.Text>
-                <Button
-                  variant='primary'
-                  style={{ marginRight: '10px', minWidth: '100px' }}
-                  onClick={() => handleShow(product.id)}
-                >
-                  Edit
-                </Button>
-                <Button
-                  variant='danger'
-                  onClick={() => deleteProductByID(product.id)}
-                  style={{ marginLeft: '10px', minWidth: '100px' }}
-                >
-                  Delete
-                </Button>
-              </Card.Body>
-            </Card>
+            <ProductCard product={product} handleShow={handleShow} deleteProductByID={deleteProductByID} />
           </div>
         </Col>
       );

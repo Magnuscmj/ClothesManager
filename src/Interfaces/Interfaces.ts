@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface IProduct {
   id?: string;
   name: string;
@@ -25,4 +27,10 @@ export interface IUpdateProductForm {
     id?: string
   ) => Promise<void>;
   id?: string;
+}
+
+export interface IProductItem{
+    product: IProduct,
+    handleShow: (id?: string) => void,
+    deleteProductByID: (id?: string) => Promise<void>
 }

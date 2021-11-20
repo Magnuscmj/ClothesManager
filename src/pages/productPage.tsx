@@ -1,4 +1,4 @@
-import Products from '../components/products/Products';
+import Products from '../components/products/ListProducts';
 import '../App.css';
 
 
