@@ -8,7 +8,6 @@ body {
   background-size: cover;
   min-height: 100vh;
   overflow-x: hidden;
-    
 }
 
 h1 {
@@ -18,7 +17,7 @@ h1 {
 }
 
 h2 {
-  color: rgb(218, 218, 218)!important;
+  color: rgb(218, 218, 218) !important;
 }
 
 .post-form {

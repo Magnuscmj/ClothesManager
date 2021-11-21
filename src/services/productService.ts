@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { IProduct } from '../Interfaces/Interfaces';
 
-
 //fetch url from server
 export const productService = (function () {
   const urlToProductController = 'https://localhost:5001/products';
@@ -10,46 +9,66 @@ export const productService = (function () {
 
   //GET
   const getAllProducts = async () => {
-    const result = await axios.get<IProduct[]>(urlToProductController);
-    return result.data as IProduct[];
+    try {
+      const result = await axios.get<IProduct[]>(urlToProductController);
+      return result.data as IProduct[];
+    } catch (e) {
+      console.log('Error', e);
+      return [];
+    }
   };
 
   //POST
   const postProduct = async (newProduct: IProduct, image: File) => {
-    let formData = new FormData();
-    formData.append('file', image);
+    try {
+      let formData = new FormData();
+      formData.append('file', image);
 
-    axios.post(urlToProductController, newProduct);
-    axios({
-      url: urlToImageUploadController,
-      method: 'POST',
-      data: formData,
-      headers: { 'Content-Type': 'multipart/form-data' },
-    });
+      axios.post(urlToProductController, newProduct);
+      axios({
+        url: urlToImageUploadController,
+        method: 'POST',
+        data: formData,
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+    } catch (e) {
+      console.log('Error', e);
+    }
   };
 
   //DELETE
   const deleteProduct = async (id?: string) => {
-    await axios.delete(`https://localhost:5001/products/${id}`);
+    try {
+      await axios.delete(`https://localhost:5001/products/${id}`);
+    } catch (e) {
+      console.log('Error', e);
+    }
   };
 
   //PUT
-  const updateProduct = async (data: IProduct, image: File | undefined , id?: string) => {
-    let formData = new FormData();
-  
-    if(!image){
-      await axios.put(`https://localhost:5001/products/${id}`, data);
-      return
-    }
-    formData.append('file', image);
+  const updateProduct = async (
+    data: IProduct,
+    image: File | undefined,
+    id?: string
+  ) => {
+    try {
+      let formData = new FormData();
 
-    await axios.put(`https://localhost:5001/products/${id}`, data);
-    axios({
-      url: urlToImageUploadController,
-      method: 'POST',
-      data: formData,
-      headers: { 'Content-Type': 'multipart/form-data' },
-    });
+      if (!image) {
+        await axios.put(`https://localhost:5001/products/${id}`, data);
+        return;
+      }
+      formData.append('file', image);
+      await axios.put(`https://localhost:5001/products/${id}`, data);
+      axios({
+        url: urlToImageUploadController,
+        method: 'POST',
+        data: formData,
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+    } catch (e) {
+      console.log('Error', e);
+    }
   };
 
   // returns the requests
@@ -57,6 +76,6 @@ export const productService = (function () {
     getAllProducts,
     postProduct,
     deleteProduct,
-    updateProduct
+    updateProduct,
   };
 })();
