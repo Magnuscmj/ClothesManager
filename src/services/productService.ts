@@ -37,6 +37,7 @@ export const productService = (function () {
         data: formData,
         headers: { 'Content-Type': 'multipart/form-data' },
       });
+      getAllProducts();
     } catch (e) {
       console.log('Error', e);
     }

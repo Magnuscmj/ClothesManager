@@ -62,6 +62,7 @@ export const FilterProducts = () => {
         <Row>
             <Col>
             <select onChange={handleChange} name="typeFilter" id="typeFilter">
+                <option value=""></option>
                 {createOptions()}
             </select>
             </Col>

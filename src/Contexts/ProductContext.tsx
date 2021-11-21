@@ -1,4 +1,4 @@
-import { FC, useState, createContext, useEffect, ChangeEvent  } from "react"
+import { FC, useState, createContext, useEffect, ChangeEvent} from "react"
 import { IProduct, IUpdateProduct } from "../Interfaces/Interfaces";
 import { productService } from "../services/productService";
 import { ProductContextType } from "../types/ProductContextType";
@@ -48,7 +48,7 @@ export const ProductProvider: FC = ({children}) => {
 
       const [newProduct, setNewProduct] = useState<IProduct>({
         name: '',
-        image: '',
+        image: 'placeholderImage.png',
         type: '',
       });
 
@@ -57,7 +57,7 @@ export const ProductProvider: FC = ({children}) => {
       const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         let { name } = event.target;
         let value;
-    
+        
         switch (name) {
           case 'name':
             value = event.target.value;

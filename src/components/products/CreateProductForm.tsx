@@ -7,7 +7,7 @@ import { ProductContextType } from '../../types/ProductContextType';
 import { ProductContext } from '../../Contexts/ProductContext';
 
 const CreateProductForm: FC = () => {
-  const {newProduct, newImage, handleChange, } = useContext(ProductContext) as ProductContextType
+  const {newProduct, newImage, handleChange, setNewProduct} = useContext(ProductContext) as ProductContextType
   const history = useHistory();
 
   const postNewProduct = () => {
@@ -26,6 +26,11 @@ const CreateProductForm: FC = () => {
       timer: 1500,
     });
     productService.postProduct(newProduct, newImage as File);
+    setNewProduct({
+      name: '',
+      type: '',
+      image: 'placeholderImage.png'
+    })
     history.push('/productPage');
   };
 
