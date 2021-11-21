@@ -2,7 +2,7 @@ import { FC, ChangeEvent, useState } from 'react';
 import { productService } from '../../services/productService';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { IProduct } from '../../Interfaces/Interfaces';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const CreateProductForm: FC = () => {
@@ -69,8 +69,8 @@ const CreateProductForm: FC = () => {
         </Form.Group>
         <Form.Group className='mb-3'>
           <Form.Label>
-            <h5>Chose image:</h5>
-          </Form.Label>
+            <h4>Chose image:</h4>
+          </Form.Label> 
           <Form.Control onChange={handleChange} name='image' type='file' />
         </Form.Group>
         <Form.Group className='mb-3'>

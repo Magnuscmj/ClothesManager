@@ -1,14 +1,16 @@
-import React, { FC, useState } from 'react';
+import { FC, useContext } from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import { IUpdateProductModal } from '../../Interfaces/Interfaces';
+import { ProductContext } from '../../Contexts/ProductContext';
+import { ProductContextType } from '../../types/ProductContextType';
 import { UpdateProductForm } from './UpdateProductForm';
 
-export const UpdateProductModal: FC<IUpdateProductModal> = (props) => {
+export const UpdateProductModal: FC = () => {
+  const context = useContext(ProductContext) as ProductContextType
   return (
     <>
       <Modal
-        show={props.showModal}
-        onHide={props.handleClose}
+        show={context.showModal}
+        onHide={context.handleClose}
         aria-labelledby='contained-modal-title-vcenter'
         centered
       >
@@ -17,12 +19,12 @@ export const UpdateProductModal: FC<IUpdateProductModal> = (props) => {
         </Modal.Header>
         <Modal.Body>
           <UpdateProductForm
-            updateFunction={props.updateFunction}
-            id={props.selectedId}
+            updateFunction={context.updateProduct}
+            id={context.selectedId}
           />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='secondary' onClick={props.handleClose}>
+          <Button variant='secondary' onClick={context.handleClose}>
             Close
           </Button>
         </Modal.Footer>

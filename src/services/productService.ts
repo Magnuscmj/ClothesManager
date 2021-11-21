@@ -61,6 +61,7 @@ export const productService = (function () {
       let formData = new FormData();
       let existingProduct = await getSingleProduct(id);
      
+      //Keep previous values if user hasn't sent in property values
       for (var [key, value] of Object.entries(data)) {
         if(value === ''){
           value = 'test'

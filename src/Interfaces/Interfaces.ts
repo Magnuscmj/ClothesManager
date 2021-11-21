@@ -7,6 +7,10 @@ export interface IProduct {
   image: string;
 }
 
+export type IProducts = {
+  products: IProduct[];
+}
+
 export interface IUpdateProductModal {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;

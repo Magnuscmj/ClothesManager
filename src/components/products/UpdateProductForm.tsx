@@ -1,6 +1,6 @@
-import React, { ChangeEvent, FC, useState } from 'react'
+import { ChangeEvent, FC, useState } from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
-import { IProduct, IUpdateProduct, IUpdateProductForm } from '../../Interfaces/Interfaces';
+import { IUpdateProduct, IUpdateProductForm } from '../../Interfaces/Interfaces';
 
 export const UpdateProductForm: FC<IUpdateProductForm> = (props) => {
     const [newProduct, setNewProduct] = useState<IUpdateProduct>({
@@ -13,10 +13,11 @@ export const UpdateProductForm: FC<IUpdateProductForm> = (props) => {
     
       const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         let { name } = event.target;
+        let value;
     
         switch (name) {
           case 'name':
-            var { value } = event.target;
+            value = event.target.value;
             setNewProduct({ ...newProduct, name: value });
             break;
           case 'image':
@@ -27,9 +28,8 @@ export const UpdateProductForm: FC<IUpdateProductForm> = (props) => {
             }
             break;
           case 'type':
-            var { value } = event.target;
+            value = event.target.value;
             setNewProduct({ ...newProduct, type: value });
-      
             break;
         }
       };
