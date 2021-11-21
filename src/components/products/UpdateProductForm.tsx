@@ -1,9 +1,9 @@
 import React, { ChangeEvent, FC, useState } from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
-import { IProduct, IUpdateProductForm } from '../../Interfaces/Interfaces';
+import { IProduct, IUpdateProduct, IUpdateProductForm } from '../../Interfaces/Interfaces';
 
 export const UpdateProductForm: FC<IUpdateProductForm> = (props) => {
-    const [newProduct, setNewProduct] = useState<IProduct>({
+    const [newProduct, setNewProduct] = useState<IUpdateProduct>({
         name: '',
         image: '',
         type: '',

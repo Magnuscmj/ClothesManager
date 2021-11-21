@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IProduct } from '../Interfaces/Interfaces';
+import { IProduct, IUpdateProduct } from '../Interfaces/Interfaces';
 
 //fetch url from server
 export const productService = (function () {
@@ -17,6 +17,12 @@ export const productService = (function () {
       return [];
     }
   };
+
+  //GET single product
+  const getSingleProduct = async (id?: string) => {
+      const product = await axios.get<IProduct>(`https://localhost:5001/products/${id}`)
+      return product.data as IProduct;
+  }
 
   //POST
   const postProduct = async (newProduct: IProduct, image: File) => {
@@ -47,13 +53,22 @@ export const productService = (function () {
 
   //PUT
   const updateProduct = async (
-    data: IProduct,
+    data: IUpdateProduct,
     image: File | undefined,
     id?: string
   ) => {
     try {
       let formData = new FormData();
-
+      let existingProduct = await getSingleProduct(id);
+     
+      for (var [key, value] of Object.entries(data)) {
+        if(value === ''){
+          value = 'test'
+          key.replace(":", "");
+          data[key as keyof IUpdateProduct] = existingProduct[key as keyof IProduct];
+        }
+      }
+      
       if (!image) {
         await axios.put(`https://localhost:5001/products/${id}`, data);
         return;

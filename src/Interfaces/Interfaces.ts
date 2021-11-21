@@ -14,7 +14,7 @@ export interface IUpdateProductModal {
   handleClose: () => void;
   selectedId?: string;
   updateFunction: (
-    data: IProduct,
+    data: IUpdateProduct,
     image: File | undefined,
     id?: string
   ) => Promise<void>;
@@ -22,7 +22,7 @@ export interface IUpdateProductModal {
 
 export interface IUpdateProductForm {
   updateFunction: (
-    data: IProduct,
+    data: IUpdateProduct,
     image: File | undefined,
     id?: string
   ) => Promise<void>;
@@ -33,4 +33,11 @@ export interface IProductItem{
     product: IProduct,
     handleShow: (id?: string) => void,
     deleteProductByID: (id?: string) => Promise<void>
+}
+
+export interface IUpdateProduct{
+  id?: string;
+  name?: string;
+  type?: string;
+  image?: string;
 }

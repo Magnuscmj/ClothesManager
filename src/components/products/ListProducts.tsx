@@ -2,7 +2,7 @@ import { useState, useEffect, FC } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { productService } from '../../services/productService';
 import '../../App.css';
-import { IProduct } from '../../Interfaces/Interfaces';
+import { IProduct, IUpdateProduct } from '../../Interfaces/Interfaces';
 import { UpdateProductModal } from './UpdateProductModal';
 import { ProductCard } from './ProductCard';
 import { Link } from 'react-router-dom';
@@ -39,7 +39,7 @@ const Products: FC = () => {
   };
 
   const updateProduct = async (
-    data: IProduct,
+    data: IUpdateProduct,
     image: File | undefined,
     id?: string
   ) => {
