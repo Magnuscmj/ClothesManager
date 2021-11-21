@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 const CreateProductForm: FC = () => {
   const [newProduct, setNewProduct] = useState<IProduct>({
     name: '',
-    image: '',
+    image: 'placeholderImage.png',
     type: '',
   });
   const [newImage, setNewImage] = useState<File>();
@@ -86,7 +86,7 @@ const CreateProductForm: FC = () => {
           variant='primary'
           value='Save new product'
         >
-          <h6>Add new products to card + </h6>
+          <h6>Add product + </h6>
         </Button>
       </Form>
       </Col>

@@ -8,7 +8,7 @@ export const ProductContext = createContext<ProductContextType | null>(null);
 export const ProductProvider: FC = ({children}) => {
 
     const [products, setProducts] = useState<IProduct[]>([
-        { id: 'loading..', name: 'Loading..', type: 'Loading..', image: 'loading' },
+        { id: 'loading..', name: 'Loading..', type: 'Loading..', image: 'placeholderImage.png' },
       ]);
     
       const [selectedId, setSelectedId] = useState<string | undefined>();
