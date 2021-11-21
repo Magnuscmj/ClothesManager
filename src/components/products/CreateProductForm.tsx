@@ -1,41 +1,14 @@
-import { FC, ChangeEvent, useState } from 'react';
+import { FC, useContext } from 'react';
 import { productService } from '../../services/productService';
 import { Button, Col, Container, Form } from 'react-bootstrap';
-import { IProduct } from '../../Interfaces/Interfaces';
 import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { ProductContextType } from '../../types/ProductContextType';
+import { ProductContext } from '../../Contexts/ProductContext';
 
 const CreateProductForm: FC = () => {
-  const [newProduct, setNewProduct] = useState<IProduct>({
-    name: '',
-    image: 'placeholderImage.png',
-    type: '',
-  });
-  const [newImage, setNewImage] = useState<File>();
+  const {newProduct, newImage, handleChange, } = useContext(ProductContext) as ProductContextType
   const history = useHistory();
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    let { name } = event.target;
-    let value;
-
-    switch (name) {
-      case 'name':
-        value = event.target.value;
-        setNewProduct({ ...newProduct, name: value });
-        break;
-      case 'image':
-        let { files } = event.target;
-        if (files) {
-          setNewProduct({ ...newProduct, image: files[0].name });
-          setNewImage(files[0]);
-        }
-        break;
-      case 'type':
-        value = event.target.value;
-        setNewProduct({ ...newProduct, type: value });
-        break;
-    }
-  };
 
   const postNewProduct = () => {
     if (newProduct.name === '' || newProduct.type === '') {
@@ -53,7 +26,7 @@ const CreateProductForm: FC = () => {
       timer: 1500,
     });
     productService.postProduct(newProduct, newImage as File);
-    history.push('/');
+    history.push('/productPage');
   };
 
   return (
@@ -65,7 +38,7 @@ const CreateProductForm: FC = () => {
           <Form.Label>
             <h5>Product name:</h5>
           </Form.Label>
-          <Form.Control onChange={handleChange} name='name' type='text'/>
+          <Form.Control onChange={handleChange} name='name' type='text' placeholder="e.g Nike sweater"/>
         </Form.Group>
         <Form.Group className='mb-3'>
           <Form.Label>
@@ -77,7 +50,7 @@ const CreateProductForm: FC = () => {
           <Form.Label>
             <h5>Select type:</h5>
           </Form.Label>
-          <Form.Control onChange={handleChange} name='type' type='text' />
+          <Form.Control onChange={handleChange} name='type' type='text' placeholder="e.g Sweater" />
         </Form.Group>
         <Button
           onClick={postNewProduct}

@@ -3,6 +3,11 @@ import { IProduct, IUpdateProduct } from "../Interfaces/Interfaces";
 
 export type ProductContextType = {
     selectedId?: string
+    newProduct: IProduct
+    setNewProduct: React.Dispatch<React.SetStateAction<IProduct>>
+    newImage?: File
+    setNewImage: React.Dispatch<React.SetStateAction<File | undefined>>
+    handleChange: (event: ChangeEvent<HTMLInputElement>) => void
     setSelectedId: React.Dispatch<React.SetStateAction<string | undefined>>
     showModal: boolean
     setShowModal: React.Dispatch<React.SetStateAction<boolean>>

@@ -1,38 +1,10 @@
-import { ChangeEvent, FC, useState } from 'react'
+import { FC, useContext } from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
-import { IUpdateProduct, IUpdateProductForm } from '../../Interfaces/Interfaces';
+import { ProductContext } from '../../Contexts/ProductContext';
+import { ProductContextType } from '../../types/ProductContextType';
 
-export const UpdateProductForm: FC<IUpdateProductForm> = (props) => {
-    const [newProduct, setNewProduct] = useState<IUpdateProduct>({
-        name: '',
-        image: '',
-        type: '',
-      });
-
-      const [newImage, setNewImage] = useState<File>();
-    
-      const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        let { name } = event.target;
-        let value;
-    
-        switch (name) {
-          case 'name':
-            value = event.target.value;
-            setNewProduct({ ...newProduct, name: value });
-            break;
-          case 'image':
-            let { files } = event.target;
-            if (files) {
-              setNewProduct({ ...newProduct, image: files[0].name });
-              setNewImage(files[0]);
-            }
-            break;
-          case 'type':
-            value = event.target.value;
-            setNewProduct({ ...newProduct, type: value });
-            break;
-        }
-      };
+export const UpdateProductForm: FC = () => {
+    const {handleChange, newProduct, newImage, selectedId, updateProduct} = useContext(ProductContext) as ProductContextType
       
     return (
         <Container>
@@ -49,7 +21,7 @@ export const UpdateProductForm: FC<IUpdateProductForm> = (props) => {
           <Form.Label><h4>Select type:</h4></Form.Label>
           <Form.Control onChange={handleChange} name='type' type='text' />
         </Form.Group>
-        <Button onClick={() => props.updateFunction(newProduct, newImage, props.id)} type='button' variant='success' value='Save new product'>
+        <Button onClick={() => updateProduct(newProduct, newImage, selectedId)} type='button' variant='success' value='Save new product'>
           Update Product
         </Button>
         </Form>

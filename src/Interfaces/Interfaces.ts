@@ -24,15 +24,6 @@ export interface IUpdateProductModal {
   ) => Promise<void>;
 }
 
-export interface IUpdateProductForm {
-  updateFunction: (
-    data: IUpdateProduct,
-    image: File | undefined,
-    id?: string
-  ) => Promise<void>;
-  id?: string;
-}
-
 export interface IProductItem{
     product: IProduct,
     handleShow: (id?: string) => void,

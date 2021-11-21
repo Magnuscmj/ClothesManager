@@ -1,4 +1,4 @@
-import { FC, useState, createContext, useEffect  } from "react"
+import { FC, useState, createContext, useEffect, ChangeEvent  } from "react"
 import { IProduct, IUpdateProduct } from "../Interfaces/Interfaces";
 import { productService } from "../services/productService";
 import { ProductContextType } from "../types/ProductContextType";
@@ -46,9 +46,39 @@ export const ProductProvider: FC = ({children}) => {
         handleClose();
       };
 
+      const [newProduct, setNewProduct] = useState<IProduct>({
+        name: '',
+        image: '',
+        type: '',
+      });
+
+      const [newImage, setNewImage] = useState<File>();
+    
+      const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        let { name } = event.target;
+        let value;
+    
+        switch (name) {
+          case 'name':
+            value = event.target.value;
+            setNewProduct({ ...newProduct, name: value });
+            break;
+          case 'image':
+            let { files } = event.target;
+            if (files) {
+              setNewProduct({ ...newProduct, image: files[0].name });
+              setNewImage(files[0]);
+            }
+            break;
+          case 'type':
+            value = event.target.value;
+            setNewProduct({ ...newProduct, type: value });
+            break;
+        }
+      };
 
     return (
-        <ProductContext.Provider value={{products, setProducts, selectedId, setSelectedId, handleClose, handleShow, showModal, setShowModal, getProducts, deleteProductByID, updateProduct}}>
+        <ProductContext.Provider value={{products, handleChange,  newProduct, setNewProduct, newImage, setNewImage, setProducts, selectedId, setSelectedId, handleClose, handleShow, showModal, setShowModal, getProducts, deleteProductByID, updateProduct}}>
             {children}
         </ProductContext.Provider>
     )

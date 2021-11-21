@@ -18,10 +18,7 @@ export const UpdateProductModal: FC = () => {
           <Modal.Title>Update Product</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <UpdateProductForm
-            updateFunction={context.updateProduct}
-            id={context.selectedId}
-          />
+          <UpdateProductForm/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant='secondary' onClick={context.handleClose}>

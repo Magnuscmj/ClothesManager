@@ -1,5 +1,5 @@
 import { useEffect, FC, useContext } from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row} from 'react-bootstrap';
 import '../../App.css';
 import { IProduct } from '../../Interfaces/Interfaces';
 import { UpdateProductModal } from './UpdateProductModal';
@@ -9,12 +9,13 @@ import { ProductContext } from '../../Contexts/ProductContext';
 import { ProductContextType } from '../../types/ProductContextType';
 
 
-const Products: FC = () => {
+const ListProducts: FC = () => {
   const context = useContext(ProductContext) as ProductContextType;
 
   useEffect(() => {
     context.getProducts();
-  }, [context]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // bootstrap card-display
   const createProductList = () => {
@@ -51,4 +52,4 @@ const Products: FC = () => {
   );
 };
 
-export default Products;
+export default ListProducts;

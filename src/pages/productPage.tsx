@@ -1,11 +1,11 @@
-import Products from '../components/products/ListProducts';
+import ListProducts from '../components/products/ListProducts';
 import '../App.css';
 
 
 function productPage() {
   return (
     <div className='product-Container'>
-      <Products />
+      <ListProducts />
     </div>
   );
 }
