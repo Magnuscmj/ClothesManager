@@ -25,12 +25,16 @@ h2 {
 }
 
 .form-container {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('../src/assets/desk-593327_1920.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
-  align-items: center;
   justify-content: center;
-  text-align: center;
+  align-items: center;
   width: 100%;
-  height: 400px;
+  min-height: 600px;
   background-color: #353943;
 }
 

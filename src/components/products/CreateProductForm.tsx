@@ -1,6 +1,6 @@
 import { FC, ChangeEvent, useState } from 'react';
 import { productService } from '../../services/productService';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { IProduct } from '../../Interfaces/Interfaces';
 import { Link, useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -57,37 +57,41 @@ const CreateProductForm: FC = () => {
   };
 
   return (
-    <div className='form-container'>
-      <h1>Create new products</h1>
-      <Form className='post-form'>
-        <Form.Group className=' mb-3 w-100'>
+    <Container>
+    <div className='form-container text-center'>
+      <Col md="7">
+      <Form className='post-form '>
+        <Form.Group className=' mb-3'>
           <Form.Label>
-            <h4>Product name:</h4>
+            <h5>Product name:</h5>
           </Form.Label>
-          <Form.Control onChange={handleChange} name='name' type='text' />
+          <Form.Control onChange={handleChange} name='name' type='text'/>
         </Form.Group>
-        <Form.Group className='mb-3 w-100'>
+        <Form.Group className='mb-3'>
           <Form.Label>
-            <h4>Chose image:</h4>
+            <h5>Chose image:</h5>
           </Form.Label>
           <Form.Control onChange={handleChange} name='image' type='file' />
         </Form.Group>
-        <Form.Group className='mb-3 w-100'>
+        <Form.Group className='mb-3'>
           <Form.Label>
-            <h4>Select type:</h4>
+            <h5>Select type:</h5>
           </Form.Label>
           <Form.Control onChange={handleChange} name='type' type='text' />
         </Form.Group>
         <Button
           onClick={postNewProduct}
+          className="addNewButton"
           type='button'
-          variant='success'
+          variant='primary'
           value='Save new product'
         >
-          Add new products to card
+          <h6>Add new products to card + </h6>
         </Button>
       </Form>
+      </Col>
     </div>
+    </Container>
   );
 };
 

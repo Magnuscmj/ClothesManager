@@ -71,9 +71,9 @@ const Products: FC = () => {
       <Row>
         <Col className='text-center'>
           <Link to={'/createPage'}>
-          <Button className='createButton' variant='success'>
-            <h4>Create New Product +</h4>
-          </Button>
+            <Button className='createButton' variant='success'>
+              <h4>Create New Product +</h4>
+            </Button>
           </Link>
         </Col>
       </Row>
